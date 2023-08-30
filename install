@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+scriptName=$0
+
+echo
+for file in $(ls -A); do
+	if [[ $file != ".git" && $file != ${scriptName:2} ]]; then
+		ls=$(ls -l ~/$file 2> /dev/null)
+		if [[ $? -eq 2 ]]; then
+			echo "~/$file not found, copying"
+			cp $file ~
+		else
+			if [[ ~/$file -nt $file ]]; then
+				echo "~/$file is newer, not copying"
+				print -P "%F{green}$ls%f"
+				ls -l $file
+			else
+				echo "$file is newer, copying"
+				cp $file ~
+				echo $ls
+				print -P "%F{green}$(ls -l $file)%f"
+			fi
+			# TODO: color the newer diff output green
+			diff ~/$file $file
+			if [[ $? -eq 0 ]]; then
+				echo "no diff"
+			fi
+		fi
+		echo
+	fi
+done
