@@ -17,3 +17,4 @@ set history=1000
 set showmode
 set showmatch
 set backspace=indent,eol,start
+set smartindent
