@@ -12,18 +12,23 @@ for file in $(ls -A); do
 		else
 			if [[ ~/$file -nt $file ]]; then
 				echo "~/$file is newer, not copying"
+				# TODO: color the newer diff output green
+				diff ~/$file $file
+				if [[ $? -eq 0 ]]; then
+					echo "no diff"
+				fi
 				print -P "%F{green}$ls%f"
 				ls -l $file
 			else
 				echo "$file is newer, copying"
+				# TODO: color the newer diff output green
+				diff ~/$file $file
+				if [[ $? -eq 0 ]]; then
+					echo "no diff"
+				fi
 				cp $file ~
 				echo $ls
 				print -P "%F{green}$(ls -l $file)%f"
-			fi
-			# TODO: color the newer diff output green
-			diff ~/$file $file
-			if [[ $? -eq 0 ]]; then
-				echo "no diff"
 			fi
 		fi
 		echo
