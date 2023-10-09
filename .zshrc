@@ -9,10 +9,10 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+# Keep 1000 lines of history within the shell and save it to ~/.config/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.config/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
@@ -36,5 +36,9 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# add home dir to fpath for zsh completion script for git
-fpath=(~ $fpath)
+# add config dir to fpath for zsh completion script for git
+fpath=(~/.config $fpath)
+
+# change .vimrc directory to .config
+export VIMINIT='source $MYVIMRC'
+export MYVIMRC='~/.config/.vimrc'
