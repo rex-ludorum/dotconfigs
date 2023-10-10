@@ -1,13 +1,11 @@
 #!/bin/zsh
 
-scriptName=$0
-
 # newline for readability
 echo
 
 function copyAndDiff {
 	for file in $(ls -Ap $1 | grep -v /); do
-		if [[ $file != ${scriptName:2} ]]; then
+		if [[ $file != "install" && $file != "commit" ]]; then
 			# store ls output for date comparison and coloring later
 			localLsOutput=$(ls -l ~/$1$file 2> /dev/null)
 			if [[ $? -eq 2 ]]; then
