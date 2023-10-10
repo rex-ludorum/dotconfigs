@@ -2,35 +2,54 @@
 
 scriptName=$0
 
+# newline for readability
 echo
-for file in $(ls -A); do
-	if [[ $file != ".git" && $file != ${scriptName:2} ]]; then
-		ls=$(ls -l ~/$file 2> /dev/null)
-		if [[ $? -eq 2 ]]; then
-			echo "~/$file not found, copying"
-			cp $file ~
-		else
-			if [[ ~/$file -nt $file ]]; then
-				echo "~/$file is newer, not copying"
-				# TODO: color the newer diff output green
-				diff ~/$file $file
-				if [[ $? -eq 0 ]]; then
-					echo "no diff"
-				fi
-				print -P "%F{green}$ls%f"
-				ls -l $file
+
+function copyAndDiff {
+	for file in $(ls -Ap $1 | grep -v /); do
+		if [[ $file != ${scriptName:2} ]]; then
+			# store ls output for date comparison and coloring later
+			localLsOutput=$(ls -l ~/$1$file 2> /dev/null)
+			if [[ $? -eq 2 ]]; then
+				echo "$file not found locally, copying"
+				cp $1$file ~/$1
 			else
-				echo "$file is newer, copying"
-				# TODO: color the newer diff output green
-				diff ~/$file $file
-				if [[ $? -eq 0 ]]; then
-					echo "no diff"
+				if [[ ~/$1$file -nt $1$file ]]; then
+					echo "local $file is newer, not copying"
+					# TODO: color the newer diff output green
+					diff ~/$1$file $1$file
+					if [[ $? -eq 0 ]]; then
+						echo "no diff"
+					fi
+					print -P "%F{green}$localLsOutput%f"
+					ls -l $1$file
+				else
+					echo "github's $file is newer, copying"
+					# TODO: color the newer diff output green
+					diff ~/$1$file $1$file
+					if [[ $? -eq 0 ]]; then
+						echo "no diff"
+					fi
+					cp $1$file ~/$1
+					echo $localLsOutput
+					print -P "%F{green}$(ls -l $1$file)%f"
 				fi
-				cp $file ~
-				echo $ls
-				print -P "%F{green}$(ls -l $file)%f"
+			fi
+			echo
+		fi
+	done
+
+	for dir in $(ls -Ap $1 | grep /); do
+		if [[ $dir != ".git/" ]]; then
+			ls -d ~/$1$dir &> /dev/null
+			if [[ $? -eq 2 ]]; then
+				echo "directory $1$dir not found locally, copying"
+				cp -r $1$dir ~/$1$dir
+			else
+				copyAndDiff $1$dir
 			fi
 		fi
-		echo
-	fi
-done
+	done
+}
+
+copyAndDiff
