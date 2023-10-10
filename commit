@@ -5,49 +5,42 @@ scriptName=$0
 # newline for readability
 echo
 
-function copyAndDiff {
+function commitAndDiff {
 	for file in $(ls -Ap $1 | grep -v /); do
 		if [[ $file != ${scriptName:2} ]]; then
 			# store ls output for date comparison and coloring later
 			localLsOutput=$(ls -l ~/$1$file 2> /dev/null)
-			if [[ $? -eq 2 ]]; then
-				echo "$1$file not found locally, copying"
-				cp $1$file ~/$1
-			else
+			if [[ $? -eq 0 ]]; then
 				# TODO: color the newer diff output green
 				diffOutput=$(diff ~/$1$file $1$file)
-				if [[ $? -eq 0 ]]; then
-					echo "no diff between ~/$1$file and $1$file"
-				else
+				if [[ $? -eq 1 ]]; then
 					if [[ ~/$1$file -nt $1$file ]]; then
-						echo "local $1$file is newer, not copying"
+						echo "local $1$file is newer, copy to here?"
 						print -P "%F{green}$localLsOutput%f"
 						ls -l $1$file
 						echo $diffOutput
+						# TODO: ask user for input
+						# cp $1$file ~/$1
 					else
-						echo "github's $1$file is newer, copying"
+						echo "github's $1$file is newer, not copying to here"
 						echo $localLsOutput
 						print -P "%F{green}$(ls -l $1$file)%f"
 						echo $diffOutput
-						cp $1$file ~/$1
 					fi
+					echo
 				fi
 			fi
-			echo
 		fi
 	done
 
 	for dir in $(ls -Ap $1 | grep /); do
 		if [[ $dir != ".git/" ]]; then
 			ls -d ~/$1$dir &> /dev/null
-			if [[ $? -eq 2 ]]; then
-				echo "directory $1$dir not found locally, copying"
-				cp -r $1$dir ~/$1
-			else
-				copyAndDiff $1$dir
+			if [[ $? -eq 0 ]]; then
+				commitAndDiff $1$dir
 			fi
 		fi
 	done
 }
 
-copyAndDiff
+commitAndDiff

@@ -49,3 +49,5 @@ set backspace=indent,eol,start
 
 " automatically indent when creating new lines
 set smartindent
+
+set runtimepath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.config/.vim/after
