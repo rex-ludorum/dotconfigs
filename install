@@ -11,11 +11,11 @@ function copyAndDiff {
 			# store ls output for date comparison and coloring later
 			localLsOutput=$(ls -l ~/$1$file 2> /dev/null)
 			if [[ $? -eq 2 ]]; then
-				echo "$file not found locally, copying"
+				echo "$1$file not found locally, copying"
 				cp $1$file ~/$1
 			else
 				if [[ ~/$1$file -nt $1$file ]]; then
-					echo "local $file is newer, not copying"
+					echo "local $1$file is newer, not copying"
 					# TODO: color the newer diff output green
 					diff ~/$1$file $1$file
 					if [[ $? -eq 0 ]]; then
@@ -24,7 +24,7 @@ function copyAndDiff {
 					print -P "%F{green}$localLsOutput%f"
 					ls -l $1$file
 				else
-					echo "github's $file is newer, copying"
+					echo "github's $1$file is newer, copying"
 					# TODO: color the newer diff output green
 					diff ~/$1$file $1$file
 					if [[ $? -eq 0 ]]; then
