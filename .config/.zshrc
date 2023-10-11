@@ -41,4 +41,7 @@ fpath=(~/.config $fpath)
 
 # change .vimrc directory to .config
 export VIMINIT='source $MYVIMRC'
-export MYVIMRC='.config/.vimrc'
+export MYVIMRC='~/.config/.vimrc'
+
+# forget VIMINIT when using nvim to make it use its own config folder
+alias nvim='env -u VIMINIT nvim'

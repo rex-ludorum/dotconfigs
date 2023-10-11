@@ -51,3 +51,4 @@ set backspace=indent,eol,start
 set smartindent
 
 set runtimepath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.config/.vim/after
+set packpath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.config/.vim/after
