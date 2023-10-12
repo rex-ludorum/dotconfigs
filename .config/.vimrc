@@ -66,7 +66,5 @@ hi clear CursorLine
 hi CursorLine gui=underline cterm=underline
 
 " use block cursor (for nvim)
-set guicursor=n-v-c-i:block
-
 " nvim breaks cursor blink settings from mintty on windows, so set it here
-set guicursor=n-v-c-i:blinkwait0-blinkon500-blinkoff500
+set guicursor=n-v-c-i:block-blinkwait0-blinkon500-blinkoff500
