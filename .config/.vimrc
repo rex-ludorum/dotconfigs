@@ -10,7 +10,7 @@ set noexpandtab
 " show line numbers
 set number
 
-" highlight the cursor's line and column
+" highlight the cursor's column and underline its line
 set cursorline
 set cursorcolumn
 
@@ -56,3 +56,17 @@ set packpath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.con
 
 " looks best with flux
 colorscheme torte
+
+" show line number and character position
+set ruler
+
+" torte color scheme causes line to be highlighted rather than underlined
+" this changes it back to an underline
+hi clear CursorLine
+hi CursorLine gui=underline cterm=underline
+
+" use block cursor (for nvim)
+set guicursor=n-v-c-i:block
+
+" nvim breaks cursor blink settings from mintty on windows, so set it here
+set guicursor=n-v-c-i:blinkwait0-blinkon500-blinkoff500
