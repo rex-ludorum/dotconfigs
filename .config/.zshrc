@@ -44,4 +44,5 @@ export VIMINIT='source $MYVIMRC'
 export MYVIMRC='~/.config/.vimrc'
 
 # forget VIMINIT when using nvim to make it use its own config folder
-alias nvim='env -u VIMINIT nvim'
+# use xterm-256color since other TERMs with 256 colors cause weird rendering bugs in nvim
+alias nvim='TERM=xterm-256color env -u VIMINIT nvim'

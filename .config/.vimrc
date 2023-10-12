@@ -50,5 +50,9 @@ set backspace=indent,eol,start
 " automatically indent when creating new lines
 set smartindent
 
+" use .config folder for vim runtime and packages
 set runtimepath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.config/.vim/after
 set packpath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.config/.vim/after
+
+" looks best with flux
+colorscheme torte
