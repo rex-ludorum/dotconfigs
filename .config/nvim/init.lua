@@ -175,7 +175,20 @@ vim.o.shellquote = "\""
 -- disable nvim's python styling
 vim.g.python_recommended_style = 0
 
+-- make indent guides white rather than blue (shows up better on f.lux)
+-- has to be called before setting up ibl
+vim.api.nvim_set_hl(0, "IblIndent", { ctermfg=15 })
+
+-- set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,longest,noselect"
+
+require("ibl").setup {
+	-- only show indentation guides for tab indents
+	indent = {
+		tab_char = "▏",
+		char = "",
+	},
+}
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`

@@ -4,6 +4,7 @@
 echo
 
 function copyAndDiff {
+	# TODO: don't use ls to loop over files
 	for file in $(ls -Ap $1 | grep -v /); do
 		if [[ $file != "install" && $file != "commit" ]]; then
 			# store ls output for date comparison and coloring later
