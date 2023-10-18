@@ -182,6 +182,11 @@ vim.api.nvim_set_hl(0, "IblIndent", { ctermfg=15 })
 -- set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,longest,noselect"
 
+-- show trailing whitespaces as red characters (easier to find and delete)
+vim.o.list = true
+vim.o.listchars = "trail:\\u00b6,nbsp:\\u00a4,tab:\\u00bc\\u00bc"
+vim.api.nvim_set_hl(0, "Whitespace", { cterm={ bold=true }, ctermfg=9 })
+
 require("ibl").setup {
 	-- only show indentation guides for tab indents
 	indent = {

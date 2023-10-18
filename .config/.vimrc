@@ -68,3 +68,6 @@ hi CursorLine gui=underline cterm=underline
 " use block cursor (for nvim)
 " nvim breaks cursor blink settings from mintty on windows, so set it here
 set guicursor=n-v-c-i:block-blinkwait0-blinkon500-blinkoff500
+
+" set completeopt to have a better completion experience
+set completeopt=menuone,longest,noselect
