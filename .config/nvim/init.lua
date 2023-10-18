@@ -179,6 +179,9 @@ vim.g.python_recommended_style = 0
 -- has to be called before setting up ibl
 vim.api.nvim_set_hl(0, "IblIndent", { ctermfg=15 })
 
+-- hide list characters in indenting tabs after the first
+vim.api.nvim_set_hl(0, "IblWhitespace", { ctermfg=0 })
+
 -- set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,longest,noselect"
 
