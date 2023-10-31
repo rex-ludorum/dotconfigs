@@ -295,9 +295,9 @@ require('mason-lspconfig').setup()
 -- define the property 'filetypes' to the map in question.
 local servers = {
 	clangd = {},
-	gopls = {},
-	pyright = {},
-	tsserver = {},
+	-- gopls = {},
+	-- pyright = {},
+	-- tsserver = {},
 }
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
