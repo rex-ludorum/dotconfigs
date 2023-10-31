@@ -1,3 +1,5 @@
+-- on windows, make ~/AppData/Local/nvim/init.vim source this file
+
 function string:split(sSeparator, nMax, bRegexp)
 	assert(sSeparator ~= '')
 	assert(nMax == nil or nMax >= 1)
