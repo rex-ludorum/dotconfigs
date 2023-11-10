@@ -46,3 +46,6 @@ export MYVIMRC='~/.config/.vimrc'
 # forget VIMINIT when using nvim to make it use its own config folder
 # use xterm-256color since other TERMs with 256 colors cause weird rendering bugs in nvim
 alias nvim='TERM=xterm-256color env -u VIMINIT nvim'
+
+# use non-msys2 python (msys2 version has trouble building brainstem)
+alias winpython='/c/Program\ Files/Python312/python'
