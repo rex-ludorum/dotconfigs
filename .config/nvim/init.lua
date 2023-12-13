@@ -379,10 +379,16 @@ require('mason-lspconfig').setup()
 -- If you want to override the default filetypes that your language server will attach to you can
 -- define the property 'filetypes' to the map in question.
 local servers = {
-	clangd = {},
+	-- clangd = {},
 	-- gopls = {},
 	-- pyright = {},
 	-- tsserver = {},
+}
+
+require('lspconfig').clangd.setup {
+	capabilities = capabilities,
+	on_attach = on_attach,
+	cmd = {"clangd"},
 }
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
