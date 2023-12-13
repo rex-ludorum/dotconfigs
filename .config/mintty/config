@@ -4,3 +4,5 @@ Font=Consolas
 FontHeight=12
 FontWeight=400
 FontIsBold=no
+CtrlShiftShortcuts=yes
+ClipShortcuts=yes
