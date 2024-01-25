@@ -71,3 +71,8 @@ set guicursor=n-v-c-i:block-blinkwait0-blinkon500-blinkoff500
 
 " set completeopt to have a better completion experience
 set completeopt=menuone,longest,noselect
+
+" show and highlight special characters like tabs and trailing spaces
+set list
+set listchars=trail:¶,nbsp:¤,tab:¼¼
+hi SpecialKey guifg=red ctermfg=red
