@@ -74,5 +74,5 @@ set completeopt=menuone,longest,noselect
 
 " show and highlight special characters like tabs and trailing spaces
 set list
-set listchars=trail:¶,nbsp:¤,tab:¼¼
+set listchars=trail:¶,nbsp:¤,tab:¼\ 
 hi SpecialKey guifg=red ctermfg=red
