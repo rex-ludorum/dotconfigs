@@ -57,6 +57,9 @@ set packpath=~/.config/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.con
 " looks best with flux
 colorscheme torte
 
+" shows file name
+set laststatus=2
+
 " show line number and character position
 set ruler
 
