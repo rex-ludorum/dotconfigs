@@ -79,3 +79,6 @@ set completeopt=menuone,longest,noselect
 set list
 set listchars=trail:¶,nbsp:¤,tab:¼\ 
 hi SpecialKey guifg=red ctermfg=red
+
+" enable mouse
+set mouse=a
