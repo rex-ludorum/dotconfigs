@@ -49,6 +49,13 @@ alias nvim='TERM=xterm-256color env -u VIMINIT nvim'
 # use non-msys2 python (msys2 version has trouble building brainstem)
 alias winpython='/c/Program\ Files/Python312/python'
 
+# add go installation to PATH
+export PATH=$PATH:/usr/local/go/bin
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
