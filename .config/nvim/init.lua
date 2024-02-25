@@ -109,6 +109,7 @@ require("lazy").setup({
 			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
 		build = ':TSUpdate',
+		enabled = false,
 	},
 }, {})
 
@@ -239,6 +240,8 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
+-- Disable on slower computers
+--[[
 vim.defer_fn(function()
 	require('nvim-treesitter.configs').setup {
 		-- Add languages to be installed here that you want installed for treesitter
@@ -292,8 +295,9 @@ vim.defer_fn(function()
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
 					[']m'] = '@function.outer',
-					[']]'] = '@class.outer',
-				},
+]]
+-- Not sure how to include these braces in a multiline comment					[']]'] = '@class.outer',
+--[[				},
 				goto_next_end = {
 					[']M'] = '@function.outer',
 					[']['] = '@class.outer',
@@ -319,6 +323,7 @@ vim.defer_fn(function()
 		},
 	}
 end, 0)
+]]
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
