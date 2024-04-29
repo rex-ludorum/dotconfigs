@@ -6,3 +6,4 @@ FontWeight=400
 FontIsBold=no
 CtrlShiftShortcuts=yes
 ClipShortcuts=yes
+ScrollbackLines=50000
