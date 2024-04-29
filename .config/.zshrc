@@ -5,12 +5,9 @@
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
 # Keep 1000 lines of history within the shell and save it to ~/.config/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=50000
 HISTFILE=~/.config/.zsh_history
 
 # Use modern completion system
@@ -128,6 +125,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Use vim keybindings
+bindkey -v
 
 # User configuration
 
