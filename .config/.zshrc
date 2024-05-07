@@ -10,6 +10,12 @@ HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=~/.config/.zsh_history
 
+# Use zinit before compinit
+export ZINIT_HOME="${HOME}/.zinit"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -50,14 +56,21 @@ alias winpython='/c/Program\ Files/Python312/python'
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="xiong-chiamiov" # for when showing the git branch is slow
+# ZSH_THEME="xiong-chiamiov" # for when showing the git branch is slow
 # ZSH_THEME="xiong-chiamiov-plus"
+
+# user, host, full path, and time/date
+# on two lines for easier vgrepping
+# entry in a nice long thread on the Arch Linux forums: https://bbs.archlinux.org/viewtopic.php?pid=521888#p521888
+PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;30m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}'%D{"%a %b %d, %H:%M"}%b$'%{\e[0;34m%}%B]%b%{\e[0m%}
+%{\e[0;34m%}%B└─%B[%{\e[1;35m%}$%{\e[0;34m%}%B]>%{\e[0m%}%b '
+PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,12 +132,21 @@ ZSH_THEME="xiong-chiamiov" # for when showing the git branch is slow
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	git
-	zsh-autosuggestions
-)
+# plugins=(
+# 	git
+# 	zsh-autosuggestions
+# )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
+# source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+zinit light zsh-users/zsh-autosuggestions
+
+# zinit snippet OMZ::plugins/git/git.plugin.zsh
+# zinit load zsh-users/zsh-history-substring-search
+# zinit ice wait atload'_history_substring_search_config'
+# source ~/.oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
+
+zinit snippet OMZ::lib/key-bindings.zsh
 
 # Use vim keybindings
 bindkey -v
