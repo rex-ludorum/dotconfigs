@@ -16,6 +16,11 @@ export ZINIT_HOME="${HOME}/.zinit"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Set up TPM if it doesn't exist
+TPM_DIR="${HOME}/.config/tmux/plugins/tpm"
+[ ! -d $TPM_DIR ] && mkdir -p "$(dirname $TPM_DIR)"
+[ ! -d $TPM_DIR/.git ] && git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
