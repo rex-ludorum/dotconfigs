@@ -387,7 +387,7 @@ local servers = {
 	clangd = {},
 	gopls = {},
 	pyright = {},
-	tsserver = {},
+	ts_ls = {},
 }
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
