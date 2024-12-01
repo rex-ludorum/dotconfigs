@@ -1,3 +1,8 @@
+# Windows installation notes:
+# For nvim, make sure ~/AppData/Local/nvim/init.vim exists and sources ~/.config/nvim/init.lua
+# For MSYS, make sure C:/msys64/ucrt64.ini inherits the Windows path and uses zsh
+# For pip, set the appropriate global.target in the config (pip.ini itself is in ~/AppData/Roaming/pip)
+
 # Set up the prompt
 # autoload -Uz promptinit
 # promptinit
@@ -55,7 +60,7 @@ export MYVIMRC='~/.config/.vimrc'
 alias nvim='TERM=xterm-256color env -u VIMINIT nvim'
 
 # use non-msys2 python (msys2 version has trouble building brainstem)
-alias winpython='/c/Program\ Files/Python312/python'
+alias winpython='/c/Program\ Files/Python313/python'
 
 # add go installation to PATH
 export PATH=$PATH:/usr/local/go/bin
