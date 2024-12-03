@@ -381,8 +381,9 @@ require('mason-lspconfig').setup()
 local servers = {
 	clangd = {},
 	-- gopls = {},
-	-- pyright = {},
+	pyright = {},
 	-- tsserver = {},
+	kotlin_language_server = {},
 }
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
