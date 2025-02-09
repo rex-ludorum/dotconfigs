@@ -1,6 +1,6 @@
 # Windows installation notes:
 # For nvim, make sure ~/AppData/Local/nvim/init.vim exists and sources ~/.config/nvim/init.lua
-# For MSYS, make sure C:/msys64/ucrt64.ini inherits the Windows path and uses zsh
+# For MSYS, make sure C:/msys64/ucrt64.ini inherits the Windows path and uses zsh and /etc/nsswitch.conf uses the same home as Windows
 # For pip, set the appropriate global.target in the config (pip.ini itself is in ~/AppData/Roaming/pip)
 
 # Set up the prompt
