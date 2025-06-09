@@ -1,4 +1,4 @@
-#!/home/tolu/zsh/bin/zsh
+#!/home/tolu/bin/zsh
 
 scriptName=$0
 
