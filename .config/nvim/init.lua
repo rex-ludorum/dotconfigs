@@ -385,11 +385,12 @@ local servers = {
 	ts_ls = {},
 }
 
-require('lspconfig').clangd.setup {
+vim.lsp.config('clangd', {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	cmd = {"clangd"},
-}
+})
+vim.lsp.enable('clangd')
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
